@@ -1,0 +1,28 @@
+1、defineProperty方法设置enumerable
+2、遍历for....in....
+	var obj = {
+    	x:1,
+    	y:2
+	};
+	obj.z = 3;
+	for(var k in obj){
+    	console.log(k,obj[k]);
+	}
+3、通过defineProperty方法添加（属性特性默认为false）
+   直接给对象添加属性（属性特性默认都为true）
+4、- 可配置特性（[[configurable]]），确定属性是否能删除和其他特性是否可配置
+   - 可枚举特性（[[enumerable]]），属性是否可枚举
+   - 读取属性特性（[[get]]），在读取属性时调用的函数，默认是undefined
+   - 写入属性特性（[[Set]]），在写入属性时调用的函数，默认是undefined
+5、属性特性描述
+   - 属性特性描述符是一个用来查看对象属性的特性的对象
+   - 该对象包含4个属性，对应4个特性，通过getOwnPropertyDescriptor方法获得
+6、Object与属性和属性特性相关的方法
+  - Object.keys(...)、Object.getOwnPropertyNames(...) 区别：是否包含可遍历的属性
+  - Object.prototype.hasOwnProperty(...) 可结合Object.keys一起使用
+  - Object.prototype.propertyIsEnumerable(...)（hasOwnProperty的升级版）
+  - in、for...in (两者关于enumerable的区别）
+  JS 对象之扩展、密封及冻结（级别逐渐升高）
+  - Extensible（Object.isExtensible( )、Object.preventExtensions( )）限制添加新属性
+  - seal（Object.isSealed( )、Object.seal( )）在extend的限制基础上，增加限制可配置属性特性
+  - freeze（Object.isFrozen( )、Object.freeze( )）在seal的限制基础上，增加限制可写属性特性
